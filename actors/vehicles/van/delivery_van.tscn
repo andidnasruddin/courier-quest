@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddafik2rh641d"]
+[gd_scene load_steps=8 format=3 uid="uid://ddafik2rh641d"]
 
 [ext_resource type="Script" uid="uid://cl6y0lt58vf5" path="res://actors/vehicles/vehicle_controller.gd" id="1_vehicle"]
 [ext_resource type="Resource" uid="uid://cgl8an3b4uvjx" path="res://resources/vehicles/examples/delivery_van.tres" id="2_vehicle_data"]
@@ -7,9 +7,6 @@
 [ext_resource type="Script" uid="uid://nbkhx07ap3hs" path="res://components/look_ahead_camera.gd" id="5_camera"]
 [ext_resource type="Script" uid="uid://c17ofx5gj3t40" path="res://components/vehicle_enter_exit_area.gd" id="6_enter_exit"]
 [ext_resource type="Script" path="res://components/vehicle_inventory_access.gd" id="7_inventory_access"]
-[ext_resource type="Script" path="res://components/dread_cone_controller.gd" id="8_cone_light"]
-[ext_resource type="Resource" uid="uid://e9f2g3h4i5j6k" path="res://resources/visibility/examples/default_vehicle_cone.tres" id="9_vehicle_config"]
-[ext_resource type="Resource" uid="uid://f0g3h4i5j6k7l" path="res://resources/visibility/examples/default_vehicle_high_beam_cone.tres" id="10_high_beam_config"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_van"]
 size = Vector2(96, 64)
@@ -78,28 +75,3 @@ script = ExtResource("7_inventory_access")
 position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_a0tag")
 
-[node name="DreadConeController" type="Node2D" parent="."]
-script = ExtResource("8_cone_light")
-vehicle_config = ExtResource("9_vehicle_config")
-vehicle_high_beam_config = ExtResource("10_high_beam_config")
-debug_mode = false
-
-# [node name="HeadlightLeft" type="PointLight2D" parent="."]
-# DEACTIVATED: Replaced by DreadConeRefactored system
-# position = Vector2(45, -20)
-# rotation = 3.14159
-# script = ExtResource("8_cone_light")
-# cone_angle_degrees = 90.0
-# cone_length_pixels = 500.0
-# cone_color = Color(1, 0.98, 0.9, 1)
-# light_energy_value = 1.5
-
-# [node name="HeadlightRight" type="PointLight2D" parent="."]
-# DEACTIVATED: Replaced by DreadConeRefactored system
-# position = Vector2(45, 20)
-# rotation = 3.14159
-# script = ExtResource("8_cone_light")
-# cone_angle_degrees = 90.0
-# cone_length_pixels = 500.0
-# cone_color = Color(1, 0.98, 0.9, 1)
-# light_energy_value = 1.5

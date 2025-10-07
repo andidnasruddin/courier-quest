@@ -31,8 +31,6 @@ signal vehicle_moving()
 ## Reference to enter/exit position marker
 @onready var enter_exit_marker: Node2D = $EnterExitArea2D
 
-## DreadCone reference
-@onready var dread_cone: DreadConeController = $DreadConeController
 
 ## Is someone currently driving
 var is_being_driven: bool = false
@@ -43,9 +41,6 @@ var driver: Node = null
 ## Is vehicle reversing
 var is_reversing: bool = false
 
-## Headlight state
-enum BeamMode { LOW, HIGH }
-var current_beam_mode: BeamMode = BeamMode.LOW
 
 # Physics variables
 var _acceleration_input: float = 0.0
@@ -100,7 +95,6 @@ func _physics_process(delta: float) -> void:
 	_handle_input()
 	_apply_physics(delta)
 	_update_fuel(delta)
-	_update_headlights()
 
 
 ## Handle driving input
@@ -188,23 +182,6 @@ func _update_fuel(delta: float) -> void:
 		fuel_system.update_fuel(global_position, delta)
 
 
-## Update dread cone rotation to match vehicle
-func _update_headlights() -> void:
-	if dread_cone:
-		var config = dread_cone.get_current_config()
-		if config:
-			config.cone_direction = rotation + PI
-
-
-## Set beam mode (low/high beams)
-func set_beam_mode(mode: BeamMode) -> void:
-	current_beam_mode = mode
-	
-	if dread_cone:
-		if mode == BeamMode.LOW:
-			dread_cone.set_state(DreadConeConfig.DreadConeState.VEHICLE)
-		else:
-			dread_cone.set_state(DreadConeConfig.DreadConeState.VEHICLE_HIGH_BEAM)
 
 
 ## Enter vehicle (called by player)

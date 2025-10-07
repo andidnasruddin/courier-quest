@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvh8x2y304a5b"]
-
-[ext_resource type="Script" path="res://components/dread_clock_lighting_deactivated.gd" id="1"]
-
-[node name="DreadClockLighting" type="Node"]
-script = ExtResource("1")
-visible = false

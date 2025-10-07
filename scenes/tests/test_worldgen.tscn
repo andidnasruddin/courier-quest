@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwwehaodoo65o"]
+[gd_scene load_steps=15 format=3 uid="uid://bwwehaodoo65o"]
 
 [ext_resource type="PackedScene" uid="uid://bg2sx1bcojxwy" path="res://actors/player/player.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://c43yngdkajy8e" path="res://systems/chunk_manager.gd" id="2_chunk"]
@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://bwnd2uiqo2me4" path="res://resources/world/examples/poi_settlement.tres" id="9_poi_settlement"]
 [ext_resource type="Resource" path="res://resources/world/examples/poi_gas_station.tres" id="10_poi_gas"]
 [ext_resource type="Script" uid="uid://dwcuyfsfh5cs6" path="res://ui/poi_debug_label.gd" id="11_poi_label"]
-[ext_resource type="PackedScene" path="res://components/dread_clock_lighting.tscn" id="12_lighting"]
 [ext_resource type="PackedScene" path="res://components/dread_clock_audio.tscn" id="13_audio"]
 [ext_resource type="PackedScene" path="res://components/dread_clock_glitch.tscn" id="14_glitch"]
 [ext_resource type="PackedScene" path="res://ui/dread_clock_ui.tscn" id="15_clock_ui"]
@@ -45,7 +44,6 @@ world_root_path = NodePath("../WorldPOIs")
 
 [node name="WorldPOIs" type="Node2D" parent="."]
 
-[node name="DreadClockLighting" parent="." instance=ExtResource("12_lighting")]
 
 [node name="DreadClockAudio" parent="." instance=ExtResource("13_audio")]
 
@@ -56,7 +54,6 @@ rotation_speed = null
 camera_lead_enabled = null
 sprint_lead_percent = null
 camera_lead_speed = null
-cone_config = null
 
 [node name="DeliveryVan" parent="." instance=ExtResource("3_van")]
 position = Vector2(300, 0)

@@ -97,39 +97,9 @@ This document tracks what we completed, what's ongoing, and the concrete files t
     - DreadClockGlitch (visual snap effect)
   - Test scene with hotkeys (T/H/D/SPACE) for quick testing
 
-- Cone-Based Lighting System (MVP - In Progress)
-  - **Goal**: Project Zomboid/Darkwood-style directional cone flashlight with tunnel vision effect
-  - **Implemented**:
-    - ConeLight component generates geometric triangle-shaped light texture (not circular gradient)
-    - Adjustable cone angle: Walk (100°) → Sprint (70°) for tunnel vision
-    - Performance optimizations:
-      - Texture caching per 10° increments (e.g., 70°, 80°, 90°, 100°)
-      - Reduced texture size (512x512 instead of 1024x1024)
-      - Only regenerates when angle changes >5° (prevents constant regen during transitions)
-      - Result: ~60 FPS (fixed from 10 FPS lag)
-    - Position offset fixes cone apex at player center
-    - Sprint narrows cone visually (100° → 70°)
-  - **Known Issues / Debug Needed**:
-    - ⚠️ Visual cone shape needs refinement - may not look sufficiently cone-like yet
-    - ⚠️ Integration with DreadClock darkness system incomplete
-    - ⚠️ Cone rotation/direction behavior needs verification (should follow player facing)
-    - ⚠️ Vehicle lights incorrectly follow player rotation/cursor instead of vehicle direction
-    - ⚠️ Lighting visibility masking (Darkwood-style "only see what's lit") not implemented
-    - ⚠️ May need proper LightOccluder2D integration for shadows/realistic lighting
-  - **Technical Notes**:
-    - Uses PointLight2D with procedurally generated ImageTexture
-    - Texture generation: Draws filled triangle from apex (bottom center) expanding upward
-    - Brightness falloff based on distance from apex and centerline
-    - Edge softness using smoothstep for realistic light bleed
-
+    
 ## Ongoing / Next
 
-- **Lighting System (High Priority)**:
-  - Debug and refine cone-based flashlight visual appearance
-  - Fix vehicle lights to follow vehicle direction (not player cursor)
-  - Implement proper visibility masking (areas outside cone should be dark/occluded)
-  - Consider alternative approaches if current system too complex (e.g., LightOccluder2D-based system)
-  - Test integration with DreadClock ambient darkness for proper night-time feel
 
 - Roads: connect settlements (greedy/MST) and draw per-chunk.
 - Gas station refueling interaction
@@ -262,17 +232,6 @@ This document tracks what we completed, what's ongoing, and the concrete files t
   - scenes/tests/test_dread_clock.gd/.tscn (test scene with hotkeys and debug info)
   - project.godot (added DreadClock autoload)
 
-- Cone-Based Lighting System (In Progress)
-  - components/cone_light.gd (PointLight2D with procedural triangle texture generation)
-  - actors/player/player.tscn (added ConeLight component)
-  - actors/player/player.gd (integrated cone angle adjustment based on sprint state)
-  - **Deprecated/Removed** (complex systems that didn't work):
-    - components/flashlight_component.gd (old resource-based system)
-    - components/simple_flashlight.gd (gradient-based attempt)
-    - components/dread_cone_component.gd (shader-based visibility masking)
-    - shaders/cone_visibility_mask.gdshader (screen overlay approach)
-    - resources/lighting/flashlight_data.gd (resource-based configuration)
-    - resources/visibility/dread_cone_data.gd (visibility state resources)
 
 ## Tuning Knobs
 
@@ -295,19 +254,6 @@ This document tracks what we completed, what's ongoing, and the concrete files t
 - ✓ Fixed: Contract HUD now visible with proper styling (white text, black outline, 20pt font)
 - ✓ Fixed: All contracts showing same distance - POIs now have unique deterministic IDs
 - ✓ Fixed: Dynamic UI sizing - panels now auto-resize to fit grid dimensions
-- ✅ Fixed: Severe lighting system lag (10 FPS → 60 FPS)
-  - Implemented texture caching per angle increment
-  - Reduced texture size from 1024 to 512
-  - Only regenerate when angle changes significantly (>5°)
-- ✅ Fixed: Cone position offset - apex now aligned with player center
-
-- ⚠️ **Active Debug - Lighting System Issues**:
-  - Cone visual shape needs refinement (not sufficiently cone-like/directional)
-  - Vehicle lights follow player cursor instead of vehicle direction
-  - Sprint effect unclear (should narrow cone, not brighten)
-  - No visibility masking (Darkwood-style darkness outside cone)
-  - Missing integration with DreadClock lighting system
-  - May need complete refactor using different approach (LightOccluder2D system?)
 
 - Pending: Roads between settlements are not yet drawn
 

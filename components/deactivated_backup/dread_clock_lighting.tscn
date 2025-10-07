@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxm7h6v2jqp8y"]
-
-[ext_resource type="Script" path="res://components/dread_clock_lighting.gd" id="1_lighting"]
-
-[node name="DreadClockLighting" type="Node"]
-script = ExtResource("1_lighting")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.4, 0.45, 0.5, 1)

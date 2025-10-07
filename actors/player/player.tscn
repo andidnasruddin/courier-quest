@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg2sx1bcojxwy"]
+[gd_scene load_steps=5 format=3 uid="uid://bg2sx1bcojxwy"]
 
 [ext_resource type="Script" uid="uid://be2r8wbmjit12" path="res://actors/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://b258xgk5rgghn" path="res://components/locomotion_component.gd" id="2_locomotion"]
 [ext_resource type="Script" uid="uid://b217qk7gko6hw" path="res://components/Inventory.gd" id="3_inventory"]
 [ext_resource type="Script" uid="uid://dm84h4hcsh2yf" path="res://components/interaction_component.gd" id="4_interaction"]
-[ext_resource type="Script" path="res://components/dread_cone_controller.gd" id="5_cone_light"]
-[ext_resource type="Resource" uid="uid://bvn8x7k2l3m4n" path="res://resources/visibility/examples/default_walk_cone.tres" id="6_walk_config"]
-[ext_resource type="Resource" uid="uid://c5o9p8q7r6s5t" path="res://resources/visibility/examples/default_sprint_cone.tres" id="7_sprint_config"]
-[ext_resource type="Resource" uid="uid://d8e2f1g4h5j6k" path="res://resources/visibility/examples/default_aim_cone.tres" id="8_aim_config"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
 radius = 16.0
@@ -40,19 +36,3 @@ script = ExtResource("4_interaction")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="DreadConeController" type="Node2D" parent="."]
-script = ExtResource("5_cone_light")
-walk_config = ExtResource("6_walk_config")
-sprint_config = ExtResource("7_sprint_config")
-aim_config = ExtResource("8_aim_config")
-debug_mode = false
-
-# [node name="ConeLight" type="PointLight2D" parent="."]
-# DEACTIVATED: Replaced by DreadConeRefactored system
-# position = Vector2(0, 0)
-# rotation = 3.14159
-# script = ExtResource("5_cone_light")
-# cone_angle_degrees = 100.0
-# cone_length_pixels = 400.0
-# cone_color = Color(1, 0.95, 0.85, 1)
-# light_energy_value = 1.5

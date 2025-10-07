@@ -13,7 +13,6 @@ signal exited_vehicle()
 @onready var inventory: Inventory = $Inventory
 @onready var interaction: InteractionComponent = $InteractionComponent
 @onready var camera: Camera2D = $Camera2D
-@onready var dread_cone: DreadConeController = $DreadConeController
 
 ## UI References (loaded dynamically)
 var inventory_ui: PlayerInventoryUI = null
@@ -36,11 +35,6 @@ var controls_enabled: bool = true
 ## Reference to current vehicle
 var current_vehicle: Node = null
 
-## Vignette overlay for tunnel vision
-var vignette: DreadConeVignette = null
-
-## Cone configuration
-@export var cone_config: ConeConfigData = preload("res://resources/visibility/examples/default_cone_config.tres")
 
 
 func _ready() -> void:
@@ -90,12 +84,7 @@ func _setup_ui() -> void:
 		add_child(pickup_prompt_ui)
 		pickup_prompt_ui.item_selected.connect(_on_world_item_picked_up)
 
-	# Load and instance vignette
-	var vignette_scene: PackedScene = load("res://components/dread_cone_vignette.tscn") as PackedScene
-	if vignette_scene:
-		vignette = vignette_scene.instantiate() as DreadConeVignette
-		add_child(vignette)
-
+	
 
 func _process(delta: float) -> void:
 	# Always allow contract completion checks
@@ -111,7 +100,6 @@ func _process(delta: float) -> void:
 		return
 
 	_update_rotation(delta)
-	_update_cone_state()
 	
 	if not is_in_vehicle and camera_lead_enabled:
 		_update_camera_lead(delta)
@@ -183,12 +171,7 @@ func _update_rotation(delta: float) -> void:
 		var target_rotation: float = direction.angle()
 		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
 		
-		# Update dread cone to match player rotation (add 180° offset since cone points backward)
-		if dread_cone:
-			var config = dread_cone.get_current_config()
-			if config:
-				config.cone_direction = rotation + PI
-
+		
 
 ## Update camera lead behavior
 func _update_camera_lead(delta: float) -> void:
@@ -387,15 +370,3 @@ func _update_nearby_items() -> void:
 	pickup_prompt_ui.update_nearby_items(nearby)
 
 
-## Update visibility cone based on movement state
-func _update_cone_state() -> void:
-	if not dread_cone or not locomotion:
-		return
-
-	# Set cone state based on movement
-	if locomotion.is_sprinting:
-		dread_cone.set_state(DreadConeConfig.DreadConeState.SPRINT)
-	else:
-		dread_cone.set_state(DreadConeConfig.DreadConeState.WALK)
-	
-	# TODO Phase 3: Add aiming state when right-click is held
