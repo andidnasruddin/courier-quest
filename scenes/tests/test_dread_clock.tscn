@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7hvyyyra1ivq"]
+
+[ext_resource type="Script" uid="uid://dpa4ww1n1sv4b" path="res://scenes/tests/test_dread_clock.gd" id="1_test"]
+[ext_resource type="PackedScene" path="res://ui/dread_clock_ui.tscn" id="2_clock_ui"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_visuals.tscn" id="3_visuals"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_audio.tscn" id="4_audio"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_glitch.tscn" id="5_glitch"]
+
+[node name="TestDreadClock" type="Node2D"]
+script = ExtResource("1_test")
+
+[node name="DreadClockVisuals" parent="." instance=ExtResource("3_visuals")]
+
+[node name="DreadClockAudio" parent="." instance=ExtResource("4_audio")]
+
+[node name="DreadClockGlitch" parent="." instance=ExtResource("5_glitch")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DreadClockUI" parent="CanvasLayer" instance=ExtResource("2_clock_ui")]
+z_index = 1000
+
+[node name="DebugInfo" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_font_sizes/font_size = 16
+text = "Debug Info Loading..."
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.15, 1)

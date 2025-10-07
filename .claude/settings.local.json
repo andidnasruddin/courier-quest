@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/dirha/Documents/GameCreator/**)",
+      "Bash(tree:*)",
+      "Bash(cat:*)",
+      "Bash(dir:*)",
+      "Bash(godot:*)",
+      "Bash(git remote add:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

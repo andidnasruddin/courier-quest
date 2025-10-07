@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://wyfdhmap7ph1"]
+
+[ext_resource type="PackedScene" uid="uid://bg2sx1bcojxwy" path="res://actors/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://ddafik2rh641d" path="res://actors/vehicles/van/delivery_van.tscn" id="2_van"]
+
+[node name="TestVehicle" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="DeliveryVan" parent="." instance=ExtResource("2_van")]
+position = Vector2(100, 0)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="GroundVisual" type="ColorRect" parent="Ground"]
+offset_left = -800.0
+offset_top = -20.0
+offset_right = 800.0
+offset_bottom = 20.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = -628.0
+offset_top = -238.0
+offset_right = -28.0
+offset_bottom = -33.0
+text = "WASD = Move Player
+F = Enter/Exit Vehicle (when near van)
+Shift = Sprint
+
+When in vehicle:
+WASD = Drive
+F = Exit
+Camera follows automatically"
+horizontal_alignment = 1
+vertical_alignment = 1

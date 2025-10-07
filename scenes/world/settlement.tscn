@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://components/delivery_point_marker.gd" id="1_delivery"]
+[ext_resource type="Script" path="res://components/contract_board_area.gd" id="2_board"]
+
+[node name="Settlement" type="Node2D"]
+
+[node name="DeliveryPointMarker" type="Node2D" parent="."]
+script = ExtResource("1_delivery")
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.5, 0.45, 0.3, 1)
+polygon = PackedVector2Array(-200, -180, 200, -180, 240, 120, -220, 140)
+
+[node name="Building" type="Polygon2D" parent="."]
+color = Color(0.8, 0.75, 0.65, 1)
+polygon = PackedVector2Array(-80, -40, 80, -40, 80, 40, -80, 40)
+
+[node name="Roof" type="Polygon2D" parent="Building"]
+position = Vector2(0, -40)
+color = Color(0.4, 0.35, 0.3, 1)
+polygon = PackedVector2Array(-90, 0, 90, 0, 0, -20)
+
+[node name="Label" type="Label" parent="."]
+position = Vector2(-90, -120)
+text = "Settlement"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="ContractBoard" type="Area2D" parent="."]
+script = ExtResource("2_board")
+settlement_name = "Settlement"

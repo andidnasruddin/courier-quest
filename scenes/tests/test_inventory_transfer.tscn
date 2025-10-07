@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3mmegpnijxyv"]
+
+[ext_resource type="Script" uid="uid://bg1h8yicdpfjr" path="res://scenes/tests/test_inventory_transfer.gd" id="1_haito"]
+[ext_resource type="PackedScene" uid="uid://bg2sx1bcojxwy" path="res://actors/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://ddafik2rh641d" path="res://actors/vehicles/van/delivery_van.tscn" id="2_van"]
+
+[node name="TestInventoryTransfer" type="Node2D"]
+script = ExtResource("1_haito")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="DeliveryVan" parent="." instance=ExtResource("2_van")]
+position = Vector2(150, 0)
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 600.0
+offset_bottom = 180.0
+text = "INVENTORY TRANSFER TEST
+
+Player starts with test items in inventory.
+Vehicle has empty inventory.
+
+Controls:
+- TAB: Open player inventory
+- F: Access vehicle inventory (when near van rear)
+- Drag items between inventories to test transfers
+- R: Rotate items while dragging
+- ESC: Close inventories
+
+Watch the console for detailed debug logs!"

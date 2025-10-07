@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkfb5y3x2m8pn"]
+
+[ext_resource type="Script" path="res://components/dread_clock_glitch.gd" id="1_glitch"]
+
+[node name="DreadClockGlitch" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_glitch")
+
+[node name="GlitchOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.5)
+
+[node name="CameraOffset" type="Node2D" parent="."]

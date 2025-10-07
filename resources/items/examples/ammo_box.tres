@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = "ammo_box"
+item_name = "Ammo Box"
+description = "Box of ammunition."
+grid_size = Vector2i(2, 1)
+weight = 2.0
+stackable = true
+max_stack = 10
+item_type = "Ammo"

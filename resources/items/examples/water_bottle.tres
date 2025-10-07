@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = "water_bottle"
+item_name = "Water Bottle"
+description = "Clean drinking water."
+grid_size = Vector2i(1, 2)
+weight = 0.5
+stackable = true
+max_stack = 5
+item_type = "Consumable"

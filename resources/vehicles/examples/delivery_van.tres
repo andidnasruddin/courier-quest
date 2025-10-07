@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VehicleData" load_steps=2 format=3 uid="uid://cgl8an3b4uvjx"]
+
+[ext_resource type="Script" uid="uid://bk62lffouqwdw" path="res://resources/vehicles/vehicle_data.gd" id="1_vehicle_data"]
+
+[resource]
+script = ExtResource("1_vehicle_data")
+vehicle_name = "Delivery Van"
+max_speed = 3000.0
+acceleration = 1000.0
+turn_speed = 1.0

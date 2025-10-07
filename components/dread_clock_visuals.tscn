@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq8x7n5m3hj0v"]
+
+[ext_resource type="Script" path="res://components/dread_clock_visuals.gd" id="1_visuals"]
+
+[node name="DreadClockVisuals" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_visuals")
+
+[node name="AmbientOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3, 0.35, 0.4, 0.3)
+
+[node name="Vignette" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.2)

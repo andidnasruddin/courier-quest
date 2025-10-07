@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="POIData" load_steps=2 format=3 uid="uid://bwnd2uiqo2me4"]
+
+[ext_resource type="Script" uid="uid://ccb0px3rxki0l" path="res://resources/world/poi_data.gd" id="1_poi"]
+
+[resource]
+script = ExtResource("1_poi")
+poi_name = "Settlement Alpha"
+scene_path = "res://scenes/world/settlement.tscn"
+min_distance_between = 170000.0
+allowed_biomes = ["Wasteland"]
+cell_size_pixels = 170000

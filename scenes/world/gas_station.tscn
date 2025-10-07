@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://components/delivery_point_marker.gd" id="1_delivery"]
+
+[node name="GasStation" type="Node2D"]
+
+[node name="DeliveryPointMarker" type="Node2D" parent="."]
+script = ExtResource("1_delivery")
+
+[node name="Pad" type="Polygon2D" parent="."]
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-150, -100, 180, -100, 180, 40, -150, 40)
+
+[node name="Pump" type="Polygon2D" parent="."]
+position = Vector2(-60, -10)
+color = Color(0.9, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-12, -20, 12, -20, 12, 20, -12, 20)
+
+[node name="Canopy" type="Polygon2D" parent="."]
+position = Vector2(0, -60)
+color = Color(0.9, 0.9, 0.9, 1)
+polygon = PackedVector2Array(-180, -10, 180, -10, 180, 10, -180, 10)
+
+[node name="Label" type="Label" parent="."]
+position = Vector2(-80, -140)
+text = "Gas Station"
+theme_override_colors/font_color = Color(1, 1, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2

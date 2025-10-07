@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://chn7iilyifuxe"]
+
+[ext_resource type="Script" uid="uid://c722g1dyj3ird" path="res://ui/pickup_prompt_ui.gd" id="1_jwecc"]
+
+[node name="PickupPromptUI" type="CanvasLayer"]
+script = ExtResource("1_jwecc")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 206.0
+offset_bottom = 82.4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="InstructionLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "[F] Pick Up | [Scroll] Select"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://drity77gc436y"]
+
+[ext_resource type="Script" uid="uid://ffbgdvxdik62" path="res://ui/contract_hud.gd" id="1"]
+
+[node name="ContractHUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1304.0
+offset_top = 10.0
+offset_right = 1904.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20

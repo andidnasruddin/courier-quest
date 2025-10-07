@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="ConeConfigData" load_steps=2 format=3 uid="uid://bige6s2pnu1xv"]
+
+[ext_resource type="Script" uid="uid://d1vmkgkfel63t" path="res://resources/visibility/cone_config_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")

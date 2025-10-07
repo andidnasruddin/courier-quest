@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="POIData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/world/poi_data.gd" id="1_poi"]
+
+[resource]
+script = ExtResource("1_poi")
+poi_name = "Gas Station"
+poi_type = 1
+scene_path = "res://scenes/world/gas_station.tscn"
+min_distance_between = 50000.0
+allowed_biomes = PackedStringArray("Wasteland", "Radioactive Zone")
+cell_size_pixels = 70000
+spawn_chance = 0.5

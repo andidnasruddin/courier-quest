@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = "delivery_package"
+item_name = "Delivery Package"
+description = "Important cargo to deliver."
+grid_size = Vector2i(3, 3)
+weight = 5.0
+stackable = false
+max_stack = 1
+item_type = "Cargo"

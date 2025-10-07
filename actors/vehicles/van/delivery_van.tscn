@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddafik2rh641d"]
+
+[ext_resource type="Script" uid="uid://cl6y0lt58vf5" path="res://actors/vehicles/vehicle_controller.gd" id="1_vehicle"]
+[ext_resource type="Resource" uid="uid://cgl8an3b4uvjx" path="res://resources/vehicles/examples/delivery_van.tres" id="2_vehicle_data"]
+[ext_resource type="Script" uid="uid://c43u1pqx0ldx6" path="res://components/fuel_system_component.gd" id="3_fuel"]
+[ext_resource type="Script" uid="uid://b217qk7gko6hw" path="res://components/Inventory.gd" id="4_inventory"]
+[ext_resource type="Script" uid="uid://nbkhx07ap3hs" path="res://components/look_ahead_camera.gd" id="5_camera"]
+[ext_resource type="Script" uid="uid://c17ofx5gj3t40" path="res://components/vehicle_enter_exit_area.gd" id="6_enter_exit"]
+[ext_resource type="Script" path="res://components/vehicle_inventory_access.gd" id="7_inventory_access"]
+[ext_resource type="Script" path="res://components/dread_cone_controller.gd" id="8_cone_light"]
+[ext_resource type="Resource" uid="uid://e9f2g3h4i5j6k" path="res://resources/visibility/examples/default_vehicle_cone.tres" id="9_vehicle_config"]
+[ext_resource type="Resource" uid="uid://f0g3h4i5j6k7l" path="res://resources/visibility/examples/default_vehicle_high_beam_cone.tres" id="10_high_beam_config"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_van"]
+size = Vector2(96, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0dox"]
+size = Vector2(36, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tag"]
+size = Vector2(30, 96)
+
+[node name="DeliveryVan" type="CharacterBody2D" groups=["interactable", "vehicle"]]
+collision_layer = 3
+motion_mode = 1
+script = ExtResource("1_vehicle")
+vehicle_data = ExtResource("2_vehicle_data")
+
+[node name="VisualBody" type="Node2D" parent="."]
+rotation = 1.5707964
+
+[node name="VanBody" type="Polygon2D" parent="VisualBody"]
+color = Color(0.7, 0.3, 0.2, 1)
+polygon = PackedVector2Array(-32, -48, 32, -48, 32, 48, -32, 48)
+
+[node name="VanRoof" type="Polygon2D" parent="VisualBody"]
+color = Color(0.9, 0.9, 0.9, 1)
+polygon = PackedVector2Array(-28, -44, 28, -44, 28, -20, -28, -20)
+
+[node name="VanWindshield" type="Polygon2D" parent="VisualBody"]
+color = Color(0.3, 0.5, 0.7, 1)
+polygon = PackedVector2Array(-20, -42, 20, -42, 20, -30, -20, -30)
+
+[node name="DirectionIndicator" type="Polygon2D" parent="VisualBody"]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(0, -52, -8, -44, 8, -44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_van")
+
+[node name="FuelSystemComponent" type="Node" parent="."]
+script = ExtResource("3_fuel")
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("4_inventory")
+
+[node name="LookAheadCamera" type="Camera2D" parent="."]
+enabled = false
+script = ExtResource("5_camera")
+start_on_target = false
+
+[node name="EnterExitArea2D" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(30, -38)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_enter_exit")
+
+[node name="EnterExitCollision" type="CollisionShape2D" parent="EnterExitArea2D"]
+shape = SubResource("RectangleShape2D_l0dox")
+
+[node name="InventoryAccessArea2D" type="Area2D" parent="." groups=["interactable"]]
+position = Vector2(-58, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_inventory_access")
+
+[node name="InventoryAccessCollision" type="CollisionShape2D" parent="InventoryAccessArea2D"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_a0tag")
+
+[node name="DreadConeController" type="Node2D" parent="."]
+script = ExtResource("8_cone_light")
+vehicle_config = ExtResource("9_vehicle_config")
+vehicle_high_beam_config = ExtResource("10_high_beam_config")
+debug_mode = false
+
+# [node name="HeadlightLeft" type="PointLight2D" parent="."]
+# DEACTIVATED: Replaced by DreadConeRefactored system
+# position = Vector2(45, -20)
+# rotation = 3.14159
+# script = ExtResource("8_cone_light")
+# cone_angle_degrees = 90.0
+# cone_length_pixels = 500.0
+# cone_color = Color(1, 0.98, 0.9, 1)
+# light_energy_value = 1.5
+
+# [node name="HeadlightRight" type="PointLight2D" parent="."]
+# DEACTIVATED: Replaced by DreadConeRefactored system
+# position = Vector2(45, 20)
+# rotation = 3.14159
+# script = ExtResource("8_cone_light")
+# cone_angle_degrees = 90.0
+# cone_length_pixels = 500.0
+# cone_color = Color(1, 0.98, 0.9, 1)
+# light_energy_value = 1.5

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DreadConeConfig" load_steps=2 format=3 uid="uid://bvxw8n7qk2r3m"]
+
+[ext_resource type="Script" path="res://resources/visibility/dread_cone_config.gd" id="1_config"]
+
+[resource]
+script = ExtResource("1_config")
+cone_angle_degrees = 100.0
+cone_range_pixels = 400.0
+edge_softness = 0.15
+cone_origin_offset = Vector2(0, 0)
+vignette_strength = 0.2
+light_intensity = 1.5
+light_color = Color(1, 0.95, 0.85, 1)
+cast_shadows = true
+shadow_flicker_enabled = false
+update_rate = 60.0
+enable_distance_culling = true
+culling_distance = 500.0

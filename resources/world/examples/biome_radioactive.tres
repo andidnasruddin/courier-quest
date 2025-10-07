@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BiomeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/world/biome_data.gd" id="1_biome"]
+
+[resource]
+script = ExtResource("1_biome")
+biome_name = "Radioactive Zone"
+ground_color = Color(0.5, 0.8, 0.5, 1)
+enemy_spawn_chance = 0.6
+movement_speed_modifier = 0.9
+

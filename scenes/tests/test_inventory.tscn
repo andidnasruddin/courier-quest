@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsxt1jpjr1dxt"]
+
+[ext_resource type="PackedScene" uid="uid://bg2sx1bcojxwy" path="res://actors/player/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://bg1h8yicdpfjr" path="res://scenes/tests/test_inventory.gd" id="2_test"]
+
+[node name="TestInventory" type="Node2D"]
+script = ExtResource("2_test")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 400.0
+offset_bottom = 100.0
+text = "INVENTORY TEST
+
+Press TAB to open inventory
+WASD to move player
+Click items to pick up/drop
+Press R while dragging to rotate items"

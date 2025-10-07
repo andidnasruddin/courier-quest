@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FlashlightData" load_steps=2 format=3 uid="uid://cjr5ncsn6b7sr"]
+
+[ext_resource type="Script" uid="uid://iyd2q7gpwxkg" path="res://resources/lighting/flashlight_data.gd" id="1_flashlight"]
+
+[resource]
+script = ExtResource("1_flashlight")
+texture_rotation = 0.0
+energy = 0.5

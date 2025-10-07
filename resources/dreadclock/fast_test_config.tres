@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DreadClockConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/dreadclock/dread_clock_config.gd" id="1_config"]
+
+[resource]
+script = ExtResource("1_config")
+start_hour = 18
+end_hour = 6
+time_scale = 0.1
+calm_start_hour = 18
+calm_end_hour = 24
+hunt_start_hour = 0
+hunt_end_hour = 3
+false_dawn_start_hour = 3
+false_dawn_end_hour = 6
+calm_danger_mult = 0.8
+calm_visibility_mult = 1.0
+calm_economy_mult = 0.9
+calm_scarcity_mult = 0.9
+hunt_danger_mult = 1.5
+hunt_visibility_mult = 0.9
+hunt_economy_mult = 1.2
+hunt_scarcity_mult = 1.1
+false_dawn_danger_mult = 0.6
+false_dawn_visibility_mult = 1.15
+false_dawn_economy_mult = 1.0
+false_dawn_scarcity_mult = 1.3

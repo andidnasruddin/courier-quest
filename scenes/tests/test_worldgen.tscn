@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://bwwehaodoo65o"]
+
+[ext_resource type="PackedScene" uid="uid://bg2sx1bcojxwy" path="res://actors/player/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://c43yngdkajy8e" path="res://systems/chunk_manager.gd" id="2_chunk"]
+[ext_resource type="PackedScene" uid="uid://ddafik2rh641d" path="res://actors/vehicles/van/delivery_van.tscn" id="3_van"]
+[ext_resource type="Script" uid="uid://dno87m45kkua7" path="res://systems/world_generator.gd" id="4_worldgen"]
+[ext_resource type="Resource" path="res://resources/world/examples/biome_wasteland.tres" id="5_biome_wasteland"]
+[ext_resource type="Resource" path="res://resources/world/examples/biome_radioactive.tres" id="6_biome_radioactive"]
+[ext_resource type="Script" uid="uid://bg4fcx3is8u03" path="res://systems/chunk_debug_overlay.gd" id="7_overlay"]
+[ext_resource type="Script" uid="uid://bu5uh3801t8cj" path="res://systems/poi_placer.gd" id="8_poi_placer"]
+[ext_resource type="Resource" uid="uid://bwnd2uiqo2me4" path="res://resources/world/examples/poi_settlement.tres" id="9_poi_settlement"]
+[ext_resource type="Resource" path="res://resources/world/examples/poi_gas_station.tres" id="10_poi_gas"]
+[ext_resource type="Script" uid="uid://dwcuyfsfh5cs6" path="res://ui/poi_debug_label.gd" id="11_poi_label"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_lighting.tscn" id="12_lighting"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_audio.tscn" id="13_audio"]
+[ext_resource type="PackedScene" path="res://components/dread_clock_glitch.tscn" id="14_glitch"]
+[ext_resource type="PackedScene" path="res://ui/dread_clock_ui.tscn" id="15_clock_ui"]
+
+[node name="TestWorldgen" type="Node2D"]
+
+[node name="ChunkManager" type="Node2D" parent="."]
+script = ExtResource("2_chunk")
+player_path = NodePath("../Player")
+preload_margin_chunks = 2
+unload_margin_chunks = 3
+
+[node name="WorldGenerator" type="Node" parent="."]
+script = ExtResource("4_worldgen")
+chunk_manager_path = NodePath("../ChunkManager")
+biome_wasteland = ExtResource("5_biome_wasteland")
+biome_radioactive = ExtResource("6_biome_radioactive")
+
+[node name="ChunkDebugOverlay" type="Node2D" parent="."]
+script = ExtResource("7_overlay")
+chunk_manager_path = NodePath("../ChunkManager")
+
+[node name="POIPlacer" type="Node" parent="."]
+script = ExtResource("8_poi_placer")
+chunk_manager_path = NodePath("../ChunkManager")
+world_generator_path = NodePath("../WorldGenerator")
+seed = 1
+settlement_poi = ExtResource("9_poi_settlement")
+gas_station_poi = ExtResource("10_poi_gas")
+world_root_path = NodePath("../WorldPOIs")
+
+[node name="WorldPOIs" type="Node2D" parent="."]
+
+[node name="DreadClockLighting" parent="." instance=ExtResource("12_lighting")]
+
+[node name="DreadClockAudio" parent="." instance=ExtResource("13_audio")]
+
+[node name="DreadClockGlitch" parent="." instance=ExtResource("14_glitch")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+rotation_speed = null
+camera_lead_enabled = null
+sprint_lead_percent = null
+camera_lead_speed = null
+cone_config = null
+
+[node name="DeliveryVan" parent="." instance=ExtResource("3_van")]
+position = Vector2(300, 0)
+wheelbase = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="Label" parent="CanvasLayer"]
+z_index = 1000
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 620.0
+offset_bottom = 293.0
+text = "WORLDGEN TEST
+
+WASD to move the Player or drive the van.
+Chunks load by camera with preload/unload margins.
+Biomes paint ground color (tan vs green).
+Press P to toggle debug overlay."
+
+[node name="POIDebugLabel" type="Label" parent="CanvasLayer"]
+z_index = 1000
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 600.0
+offset_bottom = 180.0
+script = ExtResource("11_poi_label")
+poi_placer_path = NodePath("../../POIPlacer")
+player_path = NodePath("../../Player")
+
+[node name="DreadClockUI" parent="CanvasLayer" instance=ExtResource("15_clock_ui")]
+z_index = 1000
